@@ -56,17 +56,17 @@ public class AddVotePointsToUsersAndGuildsTableMigration implements Migration {
     private void addVoteTableColumns(Schema schema) throws SQLException {
         if (schema.getDbm().getConnection() instanceof MySQL) {
             schema.getDbm().queryUpdate(String.format(
-                "ALTER TABLE `%s` ADD `points` INT UNSIGNED NOT NULL DEFAULT '0' AFTER `user_id`, ADD `points_total` INT UNSIGNED NOT NULL DEFAULT '0' AFTER `points`;",
+                "ALTER TABLE `%s` ADD `points` INT UNSIGNED NOT NULL DEFAULT '100' AFTER `user_id`, ADD `points_total` INT UNSIGNED NOT NULL DEFAULT '0' AFTER `points`;",
                 Constants.VOTES_TABLE_NAME
             ));
         } else {
             schema.getDbm().queryUpdate(String.format(
-                "ALTER TABLE `%s` ADD `points` INT NOT NULL DEFAULT '0';",
+                "ALTER TABLE `%s` ADD `points` INT NOT NULL DEFAULT '100';",
                 Constants.VOTES_TABLE_NAME
             ));
 
             schema.getDbm().queryUpdate(String.format(
-                "ALTER TABLE `%s` ADD `points_total` INT NOT NULL DEFAULT '0';",
+                "ALTER TABLE `%s` ADD `points_total` INT NOT NULL DEFAULT '100';",
                 Constants.VOTES_TABLE_NAME
             ));
         }
@@ -75,12 +75,12 @@ public class AddVotePointsToUsersAndGuildsTableMigration implements Migration {
     private void addGuildsTableColumns(Schema schema) throws SQLException {
         if (schema.getDbm().getConnection() instanceof MySQL) {
             schema.getDbm().queryUpdate(String.format(
-                "ALTER TABLE `%s` ADD `points` INT UNSIGNED NOT NULL DEFAULT '0' AFTER `icon`;",
+                "ALTER TABLE `%s` ADD `points` INT UNSIGNED NOT NULL DEFAULT '100' AFTER `icon`;",
                 Constants.GUILD_TABLE_NAME
             ));
         } else {
             schema.getDbm().queryUpdate(String.format(
-                "ALTER TABLE `%s` ADD `points` INT NOT NULL DEFAULT '0';",
+                "ALTER TABLE `%s` ADD `points` INT NOT NULL DEFAULT '100';",
                 Constants.GUILD_TABLE_NAME
             ));
         }
