@@ -285,10 +285,10 @@ public class RankCommand extends Command {
         );
 
         MessageBuilder message = new MessageBuilder();
-        EmbedBuilder embed = new EmbedBuilder()
+
             .setImage("attachment://" + attachmentName)
             .setColor(background.getBackgroundColors().getExperienceForegroundColor());
-        message.setEmbed(embed.build());
+     
 
         try {
             //noinspection ConstantConditions
